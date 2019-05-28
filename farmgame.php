@@ -1,5 +1,6 @@
 <?php
 	session_start(['path'=>'farmgame']);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,17 +32,11 @@
 					$_SESSION['all_turn_count']++;
 				}			
 				
-				// random select from array
-				
-				print_r(shuffle($alive_arr));
+				// random select from array				
+				shuffle($alive_arr);
 				$selected = $alive_arr[0];
-				echo '<br>selected='.$selected;
-				echo '<br>alive='.print_r($alive_arr);
-				echo '<br>turn='.$_SESSION['all_turn_count'];
 				
 				// feed  logic as per conditions
-
-
 				foreach( $alive_arr as $value ){
 					
 					if( $value == $selected ){
@@ -84,7 +79,7 @@
 			
 			$msg = '';
 			$stop = 0;
-			if( isset($_SESSION['all_turn_count']) && !empty($_SESSION['all_turn_count']) && $_SESSION['all_turn_count'] >= 20 ){
+			if( isset($_SESSION['all_turn_count']) && !empty($_SESSION['all_turn_count']) && $_SESSION['all_turn_count'] >= 50 ){
 				// condition to check who wins
 				$stop = 1;
 				if( isset($alive_arr) && !empty($alive_arr) ){
@@ -167,11 +162,8 @@
 		<?php
 			}
 		?>
-	
-		<?php
-			
-			if( isset($_SESSION) ){ echo "<pre>"; print_r($_SESSION); echo "<pre/>"; }
-		?>
+		
+		
 
 	</body>
 </html>
