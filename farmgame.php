@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start(['path'=>'farmgame']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,6 +85,7 @@
 			$msg = '';
 			$stop = 0;
 			if( isset($_SESSION['all_turn_count']) && !empty($_SESSION['all_turn_count']) && $_SESSION['all_turn_count'] >= 20 ){
+				// condition to check who wins
 				$stop = 1;
 				if( isset($alive_arr) && !empty($alive_arr) ){
 					$farmer = $cow = $bunny = 0;
@@ -107,7 +108,7 @@
 				$stop = 1;
 				$msg = 'You lost the game, farmer died.';
 			}
-			
+			//check button for new game conditon
 			$name = 'feed';
 			$type = 'submit';
 			$disabled = '';
